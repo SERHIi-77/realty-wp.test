@@ -7,14 +7,10 @@
  * @package REALTY
  */
 
-
-
-
-
-
-
-
-
+ function realty_enqueue_style() {
+	wp_enqueue_style( 'realty-main', get_template_directory_uri(). '/assets/css/main.css', false );
+	}
+	add_action( 'wp_enqueue_scripts', 'realty_enqueue_style' );
 
 
 

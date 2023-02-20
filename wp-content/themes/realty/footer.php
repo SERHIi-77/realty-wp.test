@@ -10,6 +10,7 @@
  */
 
 ?>
+
 FOOTER
 
 <?php wp_footer(); ?>
