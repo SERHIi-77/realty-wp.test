@@ -7,10 +7,47 @@
  * @package REALTY
  */
 
- function realty_enqueue_style() {
-	wp_enqueue_style( 'realty-main', get_template_directory_uri(). '/assets/css/main.css', false );
-	}
-	add_action( 'wp_enqueue_scripts', 'realty_enqueue_style' );
+ function realty_enqueue_styles() {
+	
+	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-normalize', get_template_directory_uri(). '/assets/css/normalize.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-font-awesome', get_template_directory_uri(). '/assets/css/font-awesome.min.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-fontello', get_template_directory_uri(). '/assets/css/fontello.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-pe-icon-7-stroke', get_template_directory_uri(). '/assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-pe-icon-7-stroke-helper', get_template_directory_uri(). '/assets/fonts/icon-7-stroke/css/helper.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-animate', get_template_directory_uri(). '/assets/css/animate.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'bootstrap-select', get_template_directory_uri(). '/assets/css/bootstrap-select.min.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri(). '/assets/css/bootstrap.min.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-icheck', get_template_directory_uri(). '/assets/css/icheck.min_all.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-price-range', get_template_directory_uri(). '/assets/css/price-range.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'owl-carousel', get_template_directory_uri(). '/assets/css/owl.carousel.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'owl-theme', get_template_directory_uri(). '/assets/css/owl.theme.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'owl-transitions', get_template_directory_uri(). '/assets/css/owl.transitions.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-style', get_template_directory_uri(). '/assets/css/style.css', [], '1.0.1', 'all');
+	wp_enqueue_style( 'realty-responsive', get_template_directory_uri(). '/assets/css/responsive.css', [], '1.0.1', 'all');
+}
+
+function realty_enqueue_scripts(){
+wp_enqueue_script( 'modernizr-2.6.2', get_template_directory_uri() . '/assets/js/modernizr-2.6.2.min.js', [], '1.0.1', 'all');
+wp_enqueue_script( 'jquery-1.10.2', get_template_directory_uri() . '/assets/js/jquery-1.10.2.min.js', [], '1.0.1', 'all');
+wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [], '1.0.1', 'all');
+wp_enqueue_script( 'bootstrap-select', get_template_directory_uri() . '/assets/js/bootstrap-select.min.js', ['jquery-1.10.2', 'bootstrap'], '1.0.1', 'all');
+wp_enqueue_script( 'bootstrap-hover-dropdown', get_template_directory_uri() . '/assets/js/bootstrap-hover-dropdown.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select'], '1.0.1', 'all');
+wp_enqueue_script( 'easypiechart', get_template_directory_uri() . '/assets/js/easypiechart.min.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown'], '1.0.1', 'all');
+wp_enqueue_script( 'jquery-easypiechart', get_template_directory_uri() . '/assets/js/jquery.easypiechart.min.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart'], '1.0.1', 'all');
+wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart'], '1.0.1', 'all');
+wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/js/wow.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart', 'owl-carousel'], '1.0.1', 'all');
+wp_enqueue_script( 'icheck', get_template_directory_uri() . '/assets/js/icheck.min.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart', 'owl-carousel', 'wow'], '1.0.1', 'all');
+wp_enqueue_script( 'price-range', get_template_directory_uri() . '/assets/js/price-range.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart', 'owl-carousel', 'wow', 'icheck'], '1.0.1', 'all');
+wp_enqueue_script( 'realty-main.js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart', 'owl-carousel', 'wow', 'icheck', 'price-range'], '1.0.1', 'all');
+
+}
+
+add_action( 'wp_enqueue_scripts', 'realty_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'realty_enqueue_scripts' );
+
+
+
 
 
 
@@ -146,10 +183,6 @@ add_action( 'widgets_init', 'realty_widgets_init' );
  * Enqueue scripts and styles.
  */
 function realty_scripts() {
-	wp_enqueue_style( 'realty-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'realty-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'realty-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
