@@ -7,6 +7,7 @@
  * @package REALTY
  */
 
+// загружаем стили
  function realty_enqueue_styles() {
 	
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800', [], '1.0.1', 'all');
@@ -26,7 +27,9 @@
 	wp_enqueue_style( 'realty-style', get_template_directory_uri(). '/assets/css/style.css', [], '1.0.1', 'all');
 	wp_enqueue_style( 'realty-responsive', get_template_directory_uri(). '/assets/css/responsive.css', [], '1.0.1', 'all');
 }
+add_action( 'wp_enqueue_scripts', 'realty_enqueue_styles' );
 
+// загружаем скрипты
 function realty_enqueue_scripts(){
 wp_enqueue_script( 'modernizr-2.6.2', get_template_directory_uri() . '/assets/js/modernizr-2.6.2.min.js', [], '1.0.1', 'all');
 wp_enqueue_script( 'jquery-1.10.2', get_template_directory_uri() . '/assets/js/jquery-1.10.2.min.js', [], '1.0.1', 'all');
@@ -42,9 +45,17 @@ wp_enqueue_script( 'price-range', get_template_directory_uri() . '/assets/js/pri
 wp_enqueue_script( 'realty-main.js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-1.10.2', 'bootstrap', 'bootstrap-select', 'bootstrap-hover-dropdown', 'easypiechart', 'jquery-easypiechart', 'owl-carousel', 'wow', 'icheck', 'price-range'], '1.0.1', 'all');
 
 }
-
-add_action( 'wp_enqueue_scripts', 'realty_enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'realty_enqueue_scripts' );
+
+// загружаем мета данные
+
+function realty_enqueue_links() {
+	echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+	// <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">';
+	echo '<link rel="icon" href="favicon.ico" type="image/x-icon">';
+}
+add_action( 'wp_head', 'realty_enqueue_links' );
 
 
 
