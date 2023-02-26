@@ -64,15 +64,7 @@
                     </button>
                     <a class="navbar-brand" href="index.html"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt=""></a>
                 </div>
-                <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'header_nav',
-                        'container_class' => 'collapse navbar-collapse yamm',
-                        'container_id' => 'navigation',
-                        'depth' => 1,
-                        'menu_class' => 'main-nav nav navbar-nav navbar-right'
-                    ));
-                ?>
+                
 
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,7 +72,19 @@
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">Login</button>
                         <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
-                    </div>
+                    </div>                    
+                <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'header_nav',
+                        'container' => false,
+                        'container_class' => 'collapse navbar-collapse yamm',
+                        'container_id' => 'navigation',
+                        'depth' => 1,
+                        'menu_class' => 'main-nav nav navbar-nav navbar-right'
+                    ));
+                ?>
+
+                    <?php /*
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Home <b class="caret"></b></a>
@@ -183,6 +187,7 @@
 
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
+                    */ ?>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
