@@ -57,11 +57,17 @@ function realty_enqueue_links() {
 }
 add_action( 'wp_head', 'realty_enqueue_links' );
 
+function realty_register_nav_menus() {
+	register_nav_menus( array(
+		'header_nav' => 'Header menu',
+		'footer_nav' => 'Footer menu', 
+	  ) );
+}
+add_action('after_setup_theme', 'realty_register_nav_menus');
 
 
 
-
-
+// NOT AS
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -102,12 +108,12 @@ function realty_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'realty' ),
-		)
-	);
+	// // This theme uses wp_nav_menu() in one location.
+	// register_nav_menus(
+	// 	array(
+	// 		'menu-1' => esc_html__( 'Primary', 'realty' ),
+	// 	)
+	// );
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
