@@ -57,13 +57,16 @@ function realty_enqueue_links() {
 }
 add_action( 'wp_head', 'realty_enqueue_links' );
 
-function realty_register_nav_menus() {
+function realty_theme_init() {
 	register_nav_menus( array(
 		'header_nav' => 'Header menu',
 		'footer_nav' => 'Footer menu', 
 	  ) );
+	
+	// load language directory
+	load_theme_textdomain( 'realty', get_template_directory() . '/languages' );
 }
-add_action('after_setup_theme', 'realty_register_nav_menus');
+add_action('after_setup_theme', 'realty_theme_init');
 
 
 

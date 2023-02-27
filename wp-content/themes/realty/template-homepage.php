@@ -33,7 +33,7 @@ get_header();
                                     <input type="text" class="form-control" placeholder="Key word">
                                 </div>
                                 <div class="form-group">                                   
-                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
+                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="<?php _e('Select your city', 'realty') ?>">
 
                                         <option>New york, CA</option>
                                         <option>Paris</option>
@@ -531,12 +531,12 @@ get_header();
                             <div class="pull-right">
                                 <div class="pagination">
                                     <ul>
-                                        <li><a href="#">Prev</a></li>
+                                        <li><a href="#"><?php _e('Prev', 'realty') ?></a></li>
                                         <li><a href="#">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li><a href="#">3</a></li>
                                         <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
+                                        <li><a href="#"><?php _e('Next', 'realty') ?></a></li>
                                     </ul>
                                 </div>
                             </div>                
