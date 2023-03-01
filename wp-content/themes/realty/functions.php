@@ -68,6 +68,22 @@ function realty_theme_init() {
 }
 add_action('after_setup_theme', 'realty_theme_init');
 
+function realty_register_post_type_property() {
+	$args = [
+		'label' => esc_html__('Properties', 'realty'),
+		'public' => true,
+		'show_in_menu' => true,
+		'menu_icon' => 'dashicons-admin-generic',
+		'supports' => [
+			'excerpt', 'tumbnail'
+		]
+	];
+	register_post_type( 'Property', $args);
+
+}
+add_action('init','realty_register_post_type_property');
+
+
 
 
 // NOT AS
