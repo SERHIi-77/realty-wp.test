@@ -69,16 +69,82 @@ function realty_theme_init() {
 add_action('after_setup_theme', 'realty_theme_init');
 
 function realty_register_post_type_property() {
+	$labels = array(
+		'name'              => esc_html_x( 'Cities', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => esc_html_x( 'City', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => esc_html__( 'Search Cities', 'textdomain' ),
+		'all_items'         => esc_html__( 'All Cities', 'textdomain' ),
+		'parent_item'       => esc_html__( 'Parent City', 'textdomain' ),
+		'parent_item_colon' => esc_html__( 'Parent City:', 'textdomain' ),
+		'view_item'         => esc_html__( 'View City', 'textdomain' ),
+		'edit_item'         => esc_html__( 'Edit City', 'textdomain' ),
+		'update_item'       => esc_html__( 'Update City', 'textdomain' ),
+		'add_new_item'      => esc_html__( 'Add New City', 'textdomain' ),
+		'new_item_name'     => esc_html__( 'New City Name', 'textdomain' ),
+		'not_found'         => esc_html__( 'No City Found', 'textdomain' ),
+		'back_to_items'     => esc_html__( 'Back to Cities', 'textdomain' ),
+		'menu_name'         => esc_html__( 'Cities', 'textdomain' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'hierarchical'      => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'cities' ),
+	);
+	
+	register_taxonomy( 'cities', array('property'), $args);
+
+	unset($args);
+
+	$labels = array(
+		'name'              => esc_html_x( 'Features', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => esc_html_x( 'Feature', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => esc_html__( 'Search Features', 'textdomain' ),
+		'all_items'         => esc_html__( 'All Features', 'textdomain' ),
+		'parent_item'       => esc_html__( 'Parent Feature', 'textdomain' ),
+		'parent_item_colon' => esc_html__( 'Parent Feature:', 'textdomain' ),
+		'view_item'         => esc_html__( 'View Feature', 'textdomain' ),
+		'edit_item'         => esc_html__( 'Edit Feature', 'textdomain' ),
+		'update_item'       => esc_html__( 'Update Feature', 'textdomain' ),
+		'add_new_item'      => esc_html__( 'Add New Feature', 'textdomain' ),
+		'new_item_name'     => esc_html__( 'New Feature Name', 'textdomain' ),
+		'not_found'         => esc_html__( 'No Feature Found', 'textdomain' ),
+		'back_to_items'     => esc_html__( 'Back to Features', 'textdomain' ),
+		'menu_name'         => esc_html__( 'Features', 'textdomain' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'hierarchical'      => false,
+		'has_archive'		=> true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'features' ),
+	);
+	
+	register_taxonomy( 'Features', array('property'), $args);
+
+	unset($args);
+
 	$args = [
 		'label' => esc_html__('Properties', 'realty'),
 		'public' => true,
 		'show_in_menu' => true,
+		'has_archive' => true,
 		'menu_icon' => 'dashicons-admin-generic',
 		'supports' => [
-			'excerpt', 'tumbnail'
-		]
+			'title',
+			'editor',
+			'thumbnail',
+			'excerpt'
+		],
+		'rewrite' => array( 'slug' => 'properties' ),
 	];
-	register_post_type( 'Property', $args);
+	register_post_type( 'property', $args);
 
 }
 add_action('init','realty_register_post_type_property');
